@@ -4,7 +4,7 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
-//apply plugin: 'war'
+apply plugin: 'war'
 
 group = 'com.crud'
 version = '0.0.1-SNAPSHOT'
@@ -24,6 +24,5 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.6'
 	annotationProcessor 'org.projectlombok:lombok:1.18.6'
 
-//	compile group: 'org.apache.tomcat', name: 'tomcat-catalina', version: '9.0.17'
-
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 }
