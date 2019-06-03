@@ -23,10 +23,15 @@ public class EmailScheduler {
     @Scheduled(fixedDelay = 10000)
     public void sendInformationEmail() {
         long size = repository.count();
+        String tasks = "tasks";
+
+        if (size == 1)
+            tasks = "task";
+
         simpleEmailService.send(new Mail(
                 config.getAdminMail(),
                 SUBJECT,
-                "Currently in database you got: " + size + " tasks"
+                "Currently in database you got: " + size + " " + tasks
         ));
     }
 
