@@ -13,6 +13,9 @@ public class StaticWebPageController {
         model.put("variable", "My Themeleaf variable");
         model.put("one", 1);
         model.put("two", 2);
+        model.put("exp1", "2 * 2 = ");
+        model.put("exp2", "2 * 2 + 2 = ");
+        model.put("exp3", "2 - 2 * 2 = ");
         return "index";
     }
 }
