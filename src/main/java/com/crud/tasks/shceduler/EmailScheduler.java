@@ -19,20 +19,23 @@ public class EmailScheduler {
 
     private static final String SUBJECT = "Tasks: Once a day mail";
 
-//    @Scheduled(cron = "0 0 10 * * *")
-//    @Scheduled(fixedDelay = 10000)
-//    public void sendInformationEmail() {
-//        long size = repository.count();
-//        String tasks = "tasks";
-//
-//        if (size == 1)
-//            tasks = "task";
-//
-//        simpleEmailService.send(new Mail(
-//                config.getAdminMail(),
-//                SUBJECT,
-//                "Currently in database you got: " + size + " " + tasks
-//        ));
-//    }
+    @Scheduled(cron = "0 0 10 * * *")
+    @Scheduled(fixedDelay = 10000)
+    public void sendInformationEmail() {
+        long size = repository.count();
+        String tasks = "tasks";
+
+        if (size == 1)
+            tasks = "task";
+
+        simpleEmailService.sendInfo(new Mail(
+                config.getAdminMail(),
+                SUBJECT,
+                "Currently in database you got: " + size + " " + tasks));
+    }
+
+    public String sendMessage() {
+        return "Currently Tasks in database: " + repository.count();
+    }
 
 }
